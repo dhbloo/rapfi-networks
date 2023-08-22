@@ -35,8 +35,8 @@ binary_file = "model210901.bin"
 
 
 [model.evaluator]
-# Type of the evaluator (Options are [mix6nnue, mix7nnue])
-type = "mix7nnue"
+# Type of the evaluator (Options are [mix6nnue, mix7nnue, mix8nnue])
+type = "mix8nnue"
 
 # Win/loss rate limit that mapped to +/-20000 value
 wlr_mate_value = 0.995
@@ -49,14 +49,14 @@ draw_ratio = 1.0
 
 # The path of weights for different board sizes and rules. Weights are searched in order.
 [[model.evaluator.weights]]
-weight_file = "mix7freestyle_bs15.bin.lz4"
+weight_file = "mix8freestyle_bs15.bin.lz4"
 [[model.evaluator.weights]]
-weight_file = "mix7freestyle_bsmix.bin.lz4"
+weight_file = "mix8freestyle_bsmix.bin.lz4"
 [[model.evaluator.weights]]
-weight_file = "mix7standard_bs15.bin.lz4"
+weight_file = "mix8standard_bs15.bin.lz4"
 [[model.evaluator.weights]]
-weight_file_black = "mix7renju_bs15_black.bin.lz4"
-weight_file_white = "mix7renju_bs15_white.bin.lz4"
+weight_file_black = "mix8renju_bs15_black.bin.lz4"
+weight_file_white = "mix8renju_bs15_white.bin.lz4"
 
 
 
@@ -196,3 +196,17 @@ overwrite_depth_bound_bias = -1
 # The bias added to the queried depth bound when comparing
 # 数据库读取时读取结果的深度偏移量，默认为0
 query_result_depth_bound_bias = 0
+
+
+[database.libfile]
+
+# Mapping of marks in library file
+# Lib文件标记映射
+black_win_mark = "a"
+white_win_mark = "c"
+black_lose_mark = "c"
+white_lose_mark = "a"
+
+# Ignore all comments in imported library file
+# 是否忽略导入的Lib文件中的注释
+ignore_comment = false
