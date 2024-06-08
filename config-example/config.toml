@@ -1,6 +1,6 @@
 [requirement]
 # specify the minimal version of rapfi this config suits to
-min_version = [0,38,2]
+min_version = [0,41,1]
 
 [general]
 # Reload config file on each move
@@ -27,7 +27,7 @@ default_candidate_range = "square3_line4"
 memory_reserved_mb = 0
 
 # Default transposition table size in KB
-default_tt_size_kb = 16384
+default_tt_size_kb = 32768
 
 
 [model]
@@ -35,11 +35,8 @@ binary_file = "model210901.bin"
 
 
 [model.evaluator]
-# Type of the evaluator (Options are [mix6nnue, mix7nnue, mix8nnue])
-type = "mix8nnue"
-
-# Win/loss rate limit that mapped to +/-20000 value
-wlr_mate_value = 0.995
+# Type of the evaluator (Options are [mix8nnue, mix9nnue, mix9litennue])
+type = "mix9nnue"
 
 # The winning rate of black when the game is a draw, in [0, 1] (default is 0.5).
 draw_black_winrate = 0.5
@@ -48,16 +45,27 @@ draw_black_winrate = 0.5
 draw_ratio = 1.0
 
 # The path of weights for different board sizes and rules. Weights are searched in order.
+# For mix9nnue
 [[model.evaluator.weights]]
-weight_file = "mix8freestyle_bs15.bin.lz4"
+weight_file = "mix9freestyle_bs15.bin.lz4"
 [[model.evaluator.weights]]
-weight_file = "mix8freestyle_bsmix.bin.lz4"
+weight_file = "mix9freestyle_bsmix.bin.lz4"
 [[model.evaluator.weights]]
-weight_file = "mix8standard_bs15.bin.lz4"
+weight_file = "mix9standard_bs15.bin.lz4"
 [[model.evaluator.weights]]
-weight_file_black = "mix8renju_bs15_black.bin.lz4"
-weight_file_white = "mix8renju_bs15_white.bin.lz4"
+weight_file_black = "mix9renju_bs15_black.bin.lz4"
+weight_file_white = "mix9renju_bs15_white.bin.lz4"
 
+# For mix9litennue
+[[model.evaluator.weights]]
+weight_file = "mix9litefreestyle_bs15.bin.lz4"
+[[model.evaluator.weights]]
+weight_file = "mix9litefreestyle_bsmix.bin.lz4"
+[[model.evaluator.weights]]
+weight_file = "mix9litestandard_bs15.bin.lz4"
+[[model.evaluator.weights]]
+weight_file_black = "mix9literenju_bs15_black.bin.lz4"
+weight_file_white = "mix9literenju_bs15_white.bin.lz4"
 
 
 [search]
@@ -65,10 +73,10 @@ weight_file_white = "mix8renju_bs15_white.bin.lz4"
 aspiration_window = true
 
 # Number of iterations after we found a mate
-num_iteration_after_mate = 8
+num_iteration_after_mate = 24
 
 # Number of iterations after we found only one non-losing move at root
-num_iteration_after_singular_root = 8
+num_iteration_after_singular_root = 24
 
 # Max depth to search (in range [2,200])
 max_search_depth = 99
