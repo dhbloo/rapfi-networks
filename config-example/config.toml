@@ -35,8 +35,8 @@ binary_file = "model210901.bin"
 
 
 [model.evaluator]
-# Type of the evaluator (Options are [mix8nnue, mix9nnue, mix9litennue])
-type = "mix9nnue"
+# Type of the evaluator (Options are [mix9nnue, mix9litennue, mix9svqnnue])
+type = "mix9svqnnue"
 
 # The winning rate of black when the game is a draw, in [0, 1] (default is 0.5).
 draw_black_winrate = 0.5
@@ -45,27 +45,37 @@ draw_black_winrate = 0.5
 draw_ratio = 1.0
 
 # The path of weights for different board sizes and rules. Weights are searched in order.
+# Uncomment the weight configurations you want to use and change the evaluator type accordingly.
+# For mix9svqnnue
+[[model.evaluator.weights]]
+weight_file = "mix9svqfreestyle_bsmix.bin.lz4"
+[[model.evaluator.weights]]
+weight_file = "mix9svqstandard_bs15.bin.lz4"
+[[model.evaluator.weights]]
+weight_file_black = "mix9svqrenju_bs15_black.bin.lz4"
+weight_file_white = "mix9svqrenju_bs15_white.bin.lz4"
+
 # For mix9nnue
-[[model.evaluator.weights]]
-weight_file = "mix9freestyle_bs15.bin.lz4"
-[[model.evaluator.weights]]
-weight_file = "mix9freestyle_bsmix.bin.lz4"
-[[model.evaluator.weights]]
-weight_file = "mix9standard_bs15.bin.lz4"
-[[model.evaluator.weights]]
-weight_file_black = "mix9renju_bs15_black.bin.lz4"
-weight_file_white = "mix9renju_bs15_white.bin.lz4"
+# [[model.evaluator.weights]]
+# weight_file = "mix9freestyle_bs15.bin.lz4"
+# [[model.evaluator.weights]]
+# weight_file = "mix9freestyle_bsmix.bin.lz4"
+# [[model.evaluator.weights]]
+# weight_file = "mix9standard_bs15.bin.lz4"
+# [[model.evaluator.weights]]
+# weight_file_black = "mix9renju_bs15_black.bin.lz4"
+# weight_file_white = "mix9renju_bs15_white.bin.lz4"
 
 # For mix9litennue
-[[model.evaluator.weights]]
-weight_file = "mix9litefreestyle_bs15.bin.lz4"
-[[model.evaluator.weights]]
-weight_file = "mix9litefreestyle_bsmix.bin.lz4"
-[[model.evaluator.weights]]
-weight_file = "mix9litestandard_bs15.bin.lz4"
-[[model.evaluator.weights]]
-weight_file_black = "mix9literenju_bs15_black.bin.lz4"
-weight_file_white = "mix9literenju_bs15_white.bin.lz4"
+# [[model.evaluator.weights]]
+# weight_file = "mix9litefreestyle_bs15.bin.lz4"
+# [[model.evaluator.weights]]
+# weight_file = "mix9litefreestyle_bsmix.bin.lz4"
+# [[model.evaluator.weights]]
+# weight_file = "mix9litestandard_bs15.bin.lz4"
+# [[model.evaluator.weights]]
+# weight_file_black = "mix9literenju_bs15_black.bin.lz4"
+# weight_file_white = "mix9literenju_bs15_white.bin.lz4"
 
 
 [search]
