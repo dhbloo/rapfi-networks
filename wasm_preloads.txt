@@ -1,5 +1,5 @@
-config-example/gomocalc-mix9lite.toml@config.toml
+config-example/gomocalc-mix9svq.toml@config.toml
 config-example/gomocalc-classical210901.toml@classical210901.toml
 config-example/gomocalc-classical220723.toml@classical220723.toml
 classical@/
-mix9litennue@/
+mix9svq@/
